@@ -1,24 +1,25 @@
-# server.py
-import sys
-print(sys.path)
+# math_server.py
 
+import os
+import sys
 
 from mcp.server.fastmcp import FastMCP
 
 # Create an MCP server
-mcp = FastMCP("Demo")
+mcp = FastMCP("Math")
 
-
-# Add an addition tool
+# Define tools
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
-    return a + b
+    result = a + b
+    return result
 
+@mcp.tool()
+def multiply(a: int, b: int) -> int:
+    """Multiply two numbers"""
+    result = a * b
+    return result
 
-# Add a dynamic greeting resource
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    """Get a personalized greeting"""
-    return f"Hello, {name}!"
-
+if __name__ == "__main__":
+    mcp.run(transport="stdio")
