@@ -32,7 +32,7 @@ async def main():
             agent = create_react_agent(model, tools)
 
             response = await agent.ainvoke({"messages": "What's (7 + 3) x 5?"})
-            print("🤖 Agent Response:", response)
+            print("🤖 Agent Response log:", response)
 
 if __name__ == "__main__":
     asyncio.run(main())
